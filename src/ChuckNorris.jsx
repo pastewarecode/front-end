@@ -43,7 +43,10 @@ const ChuckNorris = ({ token }) => {
     return (
         <div>
             {loading ? (
-                <p>loading...</p>
+                //Display a spinner while loading
+                 <div>
+                    <div className="spinner"></div>
+                 </div>
             ) : error ? (
                 <p style={{ color: 'red' }}>{error}</p>
             ) : (
