@@ -10,7 +10,7 @@ const ChuckNorris = ({ token }) => {
             setLoading(true);
 
             try {
-                const response = await fetch('http://localhost:3333/facts', {
+                const response = await fetch('http://localhost:3333/fact', {
                         method: 'GET',
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -18,7 +18,6 @@ const ChuckNorris = ({ token }) => {
                     });
 
                 const data = await response.json();
-                console.log("THIS IS THE DATAAAAA: ", data);
 
                 if (response.ok && data.fact) {
                     setFact(data.fact);
@@ -48,7 +47,7 @@ const ChuckNorris = ({ token }) => {
             ) : error ? (
                 <p style={{ color: 'red' }}>{error}</p>
             ) : (
-                <h1>Chuck Norris Fact: {fact}</h1>
+                <h2>Chuck Norris Fact: {fact}</h2>
             )}
         </div>
     )
