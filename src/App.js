@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import LoginForm from './LoginForm';
 import './App.css';
+import ChuckNorris from './ChuckNorris';
 
-function App() {
+const App = () => {
+  const [uuid, setUuid] = useState(null);
+
+  const handleLogin = (userUuid) => {
+    setUuid(userUuid);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      {uuid ? (
+        <div className="welcome">
+          <h1>Welcome!</h1>
+          <p>Your UUID: {uuid}</p>
+          <ChuckNorris token={uuid} />
+        </div>
+      ) : (
+        <LoginForm onLogin={handleLogin} />
+      )}
     </div>
   );
-}
+};
 
 export default App;
