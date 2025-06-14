@@ -18,6 +18,7 @@ const ChuckNorris = ({ token }) => {
                     });
 
                 const data = await response.json();
+                console.log("THIS IS THE DATAAAAA: ", data);
 
                 if (response.ok && data.fact) {
                     setFact(data.fact);
@@ -44,6 +45,8 @@ const ChuckNorris = ({ token }) => {
         <div>
             {loading ? (
                 <p>loading...</p>
+            ) : error ? (
+                <p style={{ color: 'red' }}>{error}</p>
             ) : (
                 <h1>Chuck Norris Fact: {fact}</h1>
             )}
